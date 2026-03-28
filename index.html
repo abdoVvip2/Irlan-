@@ -3,28 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>كناشي Pro - متجر التطبيقات</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>مركز الأستاذ الذكي - المتجر الرسمي</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #2563eb;
-            --secondary: #3b82f6;
+            --primary: #1e40af;
+            --secondary: #0369a1;
+            --tanqiti: #059669;
+            --kunashi: #b7791f;
             --dark: #0f172a;
-            --slate: #64748b;
             --light: #f8fafc;
-            --success: #10b981;
-            --radius: 20px;
         }
 
         body {
-            font-family: "Segoe UI", Tahoma, sans-serif;
+            font-family: 'Noto Kufi Arabic', sans-serif;
             background-color: var(--light);
             margin: 0;
             color: var(--dark);
             line-height: 1.6;
         }
 
-        /* Hero Section */
         .hero {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
@@ -33,128 +32,138 @@
             border-bottom-left-radius: 40px;
             border-bottom-right-radius: 40px;
         }
+        .hero h1 { font-weight: 800; font-size: 2.2rem; margin-bottom: 10px; }
+        .hero p { opacity: 0.9; font-size: 1.1rem; max-width: 600px; margin: auto; }
 
-        .hero i { font-size: 4rem; margin-bottom: 20px; }
-        .hero h1 { font-size: 2.5rem; margin: 10px 0; }
-        .hero p { font-size: 1.1rem; opacity: 0.9; max-width: 600px; margin: 0 auto 30px; }
+        .container { padding: 40px 15px; max-width: 1000px; margin: auto; }
+
+        .store-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: -50px;
+        }
+
+        .app-card {
+            background: white;
+            border-radius: 35px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transition: 0.3s;
+            border: 1px solid #e2e8f0;
+            display: flex;
+            flex-direction: column;
+        }
+        .app-card:hover { transform: translateY(-10px); box-shadow: 0 25px 50px rgba(0,0,0,0.15); }
+
+        .app-header { padding: 40px; text-align: center; color: white; }
+        .kunashi-header { background: linear-gradient(45deg, #b7791f, #d97706); }
+        .tanqiti-header { background: linear-gradient(45deg, #059669, #10b981); }
+
+        .app-header i { font-size: 4rem; margin-bottom: 15px; }
+        .app-header h2 { margin: 0; font-size: 1.8rem; font-weight: 800; }
+
+        .app-body { padding: 30px; flex-grow: 1; display: flex; flex-direction: column; }
+        .app-body ul { padding: 0; list-style: none; margin: 0 0 30px 0; }
+        .app-body li { margin-bottom: 12px; font-size: 0.95rem; display: flex; align-items: center; gap: 12px; }
+        .app-body li i { color: #94a3b8; }
 
         .btn-download {
-            display: inline-block;
-            background: white;
-            color: var(--primary);
-            padding: 18px 40px;
-            border-radius: 50px;
+            display: block;
+            text-align: center;
+            padding: 18px;
+            border-radius: 20px;
             text-decoration: none;
             font-weight: 800;
-            font-size: 1.2rem;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            font-size: 1.1rem;
             transition: 0.3s;
+            margin-top: auto;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
-        .btn-download:hover { transform: translateY(-3px); box-shadow: 0 15px 25px rgba(0,0,0,0.2); }
+        .btn-kunashi { background: var(--kunashi); color: white; }
+        .btn-tanqiti { background: var(--tanqiti); color: white; }
+        .btn-download:active { transform: scale(0.95); }
 
-        /* Features Section */
-        .container { padding: 40px 20px; max-width: 900px; margin: auto; }
-        .section-title { text-align: center; margin-bottom: 40px; }
-        .section-title h2 { color: var(--dark); font-size: 1.8rem; }
+        .trust-section { margin-top: 60px; text-align: center; background: white; padding: 40px; border-radius: 30px; }
+        .trust-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; margin-top: 30px; }
+        .trust-item i { font-size: 2.5rem; color: var(--primary); margin-bottom: 10px; }
+        .trust-item p { font-weight: bold; color: #64748b; margin: 0; }
 
-        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-        .feature-card {
-            background: white;
-            padding: 25px;
-            border-radius: var(--radius);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-            text-align: center;
-            border: 1px solid #e2e8f0;
-        }
-        .feature-card i { font-size: 2rem; color: var(--primary); margin-bottom: 15px; }
-        .feature-card h3 { margin-bottom: 10px; font-size: 1.2rem; }
-        .feature-card p { color: var(--slate); font-size: 0.9rem; }
-
-        /* FAQ Section */
-        .faq-section { background: white; padding: 40px 20px; border-radius: 30px; margin-top: 40px; }
-        .faq-item { border-bottom: 1px solid #f1f5f9; padding: 15px 0; }
-        .faq-question { font-weight: bold; color: var(--dark); cursor: pointer; display: flex; justify-content: space-between; }
-        .faq-answer { color: var(--slate); font-size: 0.9rem; margin-top: 10px; display: none; }
-
-        footer { text-align: center; padding: 40px; color: var(--slate); font-size: 0.8rem; }
+        footer { text-align: center; padding: 50px; color: #94a3b8; font-size: 0.9rem; }
     </style>
 </head>
 <body>
 
     <section class="hero">
-        <i class="fas fa-book-open"></i>
-        <h1>كناشي Pro</h1>
-        <p>الحل الذكي والنهائي لكل أستاذ يبحث عن التنظيم المالي، إدارة التلاميذ، والاحترافية في العمل.</p>
-        <a href="https://www.appcreator24.com/app3976003-i4w7hb" class="btn-download">
-            <i class="fas fa-download"></i> تحميل التطبيق الآن
-        </a>
+        <h1>متجر الأدوات التعليمية</h1>
+        <p>حلول تقنية ذكية مصممة خصيصاً للأستاذ الجزائري المتميز.</p>
     </section>
 
     <div class="container">
-        <div class="section-title">
-            <h2>لماذا يختار الأساتذة "كناشي Pro"؟</h2>
-        </div>
-
-        <div class="features-grid">
-            <div class="feature-card">
-                <i class="fas fa-users-cog"></i>
-                <h3>إدارة ذكية للتلاميذ</h3>
-                <p>سجل بيانات تلاميذك، وزعهم على أفواج، وتابع حضورهم بلمسة واحدة.</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-money-check-alt"></i>
-                <h3>متابعة مالية دقيقة</h3>
-                <p>احسب أرباحك الصافية، سجل مصاريفك، واعرف ديون التلاميذ العالقة فوراً.</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-chart-line"></i>
-                <h3>تحليلات وتقارير</h3>
-                <p>رسوم بيانية توضح لك تطور مداخيلك الشهرية وتساعدك على تحسين دخلك.</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-shield-alt"></i>
-                <h3>خصوصية وأمان</h3>
-                <p>بياناتك مخزنة بأمان على جهازك، لا أحد غيرك يملك صلاحية الوصول إليها.</p>
-            </div>
-        </div>
-
-        <div class="faq-section">
-            <div class="section-title">
-                <h2>الأسئلة الشائعة</h2>
-            </div>
+        <div class="store-grid">
             
-            <div class="faq-item" onclick="toggleFaq(0)">
-                <div class="faq-question">هل التطبيق مجاني؟ <i class="fas fa-chevron-down"></i></div>
-                <div class="faq-answer" id="ans0">نعم، يمكنك البدء باستخدام الميزات الأساسية مجاناً لتنظيم عملك.لكن بعدها عليكاشتراك لمدة سنة</div>
+            <div class="app-card">
+                <div class="app-header kunashi-header">
+                    <i class="fas fa-wallet"></i>
+                    <h2>كناشي Pro</h2>
+                </div>
+                <div class="app-body">
+                    <p style="font-weight:800; color:#b7791f; margin-bottom: 20px;">المالية والتنظيم الإداري</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> إدارة أرباح الساعات الإضافية.</li>
+                        <li><i class="fas fa-check"></i> حساب المصاريف والديون بدقة.</li>
+                        <li><i class="fas fa-check"></i> تنظيم الأفواج وقوائم الحضور.</li>
+                        <li><i class="fas fa-check"></i> تقارير مالية بصيغة PDF.</li>
+                    </ul>
+                    <a href="https://www.appcreator24.com/app3976003-i4w7hb" class="btn-download btn-kunashi">
+                        <i class="fas fa-download"></i> تحميل تطبيق كناشي
+                    </a>
+                </div>
             </div>
 
-            <div class="faq-item" onclick="toggleFaq(1)">
-                <div class="faq-question">هل أحتاج للإنترنت لاستخدامه؟ <i class="fas fa-chevron-down"></i></div>
-                <div class="faq-answer" id="ans1">التطبيق يعمل بكفاءة عالية بدون إنترنت، بياناتك تُحفظ محلياً على هاتفك.</div>
+            <div class="app-card">
+                <div class="app-header tanqiti-header">
+                    <i class="fas fa-star"></i>
+                    <h2>تنقيطي Pro</h2>
+                </div>
+                <div class="app-body">
+                    <p style="font-weight:800; color:#059669; margin-bottom: 20px;">النقاط والتقارير المدرسية</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> رصد سريع لنقاط الفروض والاختبارات.</li>
+                        <li><i class="fas fa-check"></i> حساب تلقائي للمعدلات والترتيب.</li>
+                        <li><i class="fas fa-check"></i> تصدير الكشوفات لموقع الطباعة الرسمي.</li>
+                        <li><i class="fas fa-check"></i> إرسال النتائج عبر البريد الإلكتروني.</li>
+                    </ul>
+                    <a href="https://www.appcreator24.com/app3976341-vyjctf" class="btn-download btn-tanqiti">
+                        <i class="fas fa-download"></i> تحميل تطبيق تنقيطي
+                    </a>
+                </div>
             </div>
 
-            <div class="faq-item" onclick="toggleFaq(2)">
-                <div class="faq-question">هل يمكنني استخراج التقارير؟ <i class="fas fa-chevron-down"></i></div>
-                <div class="faq-answer" id="ans2">بالتأكيد، يوفر التطبيق ميزة طباعة التقارير المالية بصيغة PDF لمراجعتها لاحقاً.</div>
+        </div>
+
+        <div class="trust-section">
+            <h3 style="margin-bottom: 40px; color: var(--dark); font-weight: 800;">لماذا تثق في تطبيقاتنا؟</h3>
+            <div class="trust-grid">
+                <div class="trust-item">
+                    <i class="fas fa-user-shield"></i>
+                    <p>خصوصية بياناتك 100%</p>
+                </div>
+                <div class="trust-item">
+                    <i class="fas fa-bolt"></i>
+                    <p>سرعة وسهولة في الإدخال</p>
+                </div>
+                <div class="trust-item">
+                    <i class="fas fa-cloud-download-alt"></i>
+                    <p>تحديثات مستمرة ومجانية</p>
+                </div>
             </div>
         </div>
     </div>
 
     <footer>
-        <p>جميع الحقوق محفوظة &copy; 2026 - تطبيق كناشي Pro</p>
-    </div>
+        <p>جميع الحقوق محفوظة &copy; 2026 - المطور الجزائري لتقنيات التعليم</p>
+    </footer>
 
-    <script>
-        function toggleFaq(index) {
-            const ans = document.getElementById('ans' + index);
-            const isVisible = ans.style.display === 'block';
-            
-            // إغلاق الكل أولاً
-            document.querySelectorAll('.faq-answer').forEach(el => el.style.display = 'none');
-            
-            // فتح المختارة
-            ans.style.display = isVisible ? 'none' : 'block';
-        }
-    </script>
 </body>
 </html>
