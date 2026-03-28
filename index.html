@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>كناشي Pro - متجر التطبيقات</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #3b82f6;
+            --dark: #0f172a;
+            --slate: #64748b;
+            --light: #f8fafc;
+            --success: #10b981;
+            --radius: 20px;
+        }
+
+        body {
+            font-family: "Segoe UI", Tahoma, sans-serif;
+            background-color: var(--light);
+            margin: 0;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom-left-radius: 40px;
+            border-bottom-right-radius: 40px;
+        }
+
+        .hero i { font-size: 4rem; margin-bottom: 20px; }
+        .hero h1 { font-size: 2.5rem; margin: 10px 0; }
+        .hero p { font-size: 1.1rem; opacity: 0.9; max-width: 600px; margin: 0 auto 30px; }
+
+        .btn-download {
+            display: inline-block;
+            background: white;
+            color: var(--primary);
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.2rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+        .btn-download:hover { transform: translateY(-3px); box-shadow: 0 15px 25px rgba(0,0,0,0.2); }
+
+        /* Features Section */
+        .container { padding: 40px 20px; max-width: 900px; margin: auto; }
+        .section-title { text-align: center; margin-bottom: 40px; }
+        .section-title h2 { color: var(--dark); font-size: 1.8rem; }
+
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .feature-card {
+            background: white;
+            padding: 25px;
+            border-radius: var(--radius);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            text-align: center;
+            border: 1px solid #e2e8f0;
+        }
+        .feature-card i { font-size: 2rem; color: var(--primary); margin-bottom: 15px; }
+        .feature-card h3 { margin-bottom: 10px; font-size: 1.2rem; }
+        .feature-card p { color: var(--slate); font-size: 0.9rem; }
+
+        /* FAQ Section */
+        .faq-section { background: white; padding: 40px 20px; border-radius: 30px; margin-top: 40px; }
+        .faq-item { border-bottom: 1px solid #f1f5f9; padding: 15px 0; }
+        .faq-question { font-weight: bold; color: var(--dark); cursor: pointer; display: flex; justify-content: space-between; }
+        .faq-answer { color: var(--slate); font-size: 0.9rem; margin-top: 10px; display: none; }
+
+        footer { text-align: center; padding: 40px; color: var(--slate); font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <i class="fas fa-book-open"></i>
+        <h1>كناشي Pro</h1>
+        <p>الحل الذكي والنهائي لكل أستاذ يبحث عن التنظيم المالي، إدارة التلاميذ، والاحترافية في العمل.</p>
+        <a href="https://www.appcreator24.com/app3976003-i4w7hb" class="btn-download">
+            <i class="fas fa-download"></i> تحميل التطبيق الآن
+        </a>
+    </section>
+
+    <div class="container">
+        <div class="section-title">
+            <h2>لماذا يختار الأساتذة "كناشي Pro"؟</h2>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fas fa-users-cog"></i>
+                <h3>إدارة ذكية للتلاميذ</h3>
+                <p>سجل بيانات تلاميذك، وزعهم على أفواج، وتابع حضورهم بلمسة واحدة.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-money-check-alt"></i>
+                <h3>متابعة مالية دقيقة</h3>
+                <p>احسب أرباحك الصافية، سجل مصاريفك، واعرف ديون التلاميذ العالقة فوراً.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-chart-line"></i>
+                <h3>تحليلات وتقارير</h3>
+                <p>رسوم بيانية توضح لك تطور مداخيلك الشهرية وتساعدك على تحسين دخلك.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-shield-alt"></i>
+                <h3>خصوصية وأمان</h3>
+                <p>بياناتك مخزنة بأمان على جهازك، لا أحد غيرك يملك صلاحية الوصول إليها.</p>
+            </div>
+        </div>
+
+        <div class="faq-section">
+            <div class="section-title">
+                <h2>الأسئلة الشائعة</h2>
+            </div>
+            
+            <div class="faq-item" onclick="toggleFaq(0)">
+                <div class="faq-question">هل التطبيق مجاني؟ <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer" id="ans0">نعم، يمكنك البدء باستخدام الميزات الأساسية مجاناً لتنظيم عملك.لكن بعدها عليكاشتراك لمدة سنة</div>
+            </div>
+
+            <div class="faq-item" onclick="toggleFaq(1)">
+                <div class="faq-question">هل أحتاج للإنترنت لاستخدامه؟ <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer" id="ans1">التطبيق يعمل بكفاءة عالية بدون إنترنت، بياناتك تُحفظ محلياً على هاتفك.</div>
+            </div>
+
+            <div class="faq-item" onclick="toggleFaq(2)">
+                <div class="faq-question">هل يمكنني استخراج التقارير؟ <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer" id="ans2">بالتأكيد، يوفر التطبيق ميزة طباعة التقارير المالية بصيغة PDF لمراجعتها لاحقاً.</div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>جميع الحقوق محفوظة &copy; 2026 - تطبيق كناشي Pro</p>
+    </div>
+
+    <script>
+        function toggleFaq(index) {
+            const ans = document.getElementById('ans' + index);
+            const isVisible = ans.style.display === 'block';
+            
+            // إغلاق الكل أولاً
+            document.querySelectorAll('.faq-answer').forEach(el => el.style.display = 'none');
+            
+            // فتح المختارة
+            ans.style.display = isVisible ? 'none' : 'block';
+        }
+    </script>
+</body>
+</html>
