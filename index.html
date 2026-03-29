@@ -3,167 +3,925 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مركز الأستاذ الذكي - المتجر الرسمي</title>
+    <title>متجر الأدوات التعليمية</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
         :root {
-            --primary: #1e40af;
-            --secondary: #0369a1;
-            --tanqiti: #059669;
-            --kunashi: #b7791f;
-            --dark: #0f172a;
-            --light: #f8fafc;
+            --blue:    #1A73E8;
+            --blue-dk: #1557B0;
+            --blue-lt: #E8F0FE;
+            --green:   #1E8E3E;
+            --green-lt:#E6F4EA;
+            --amber:   #E37400;
+            --amber-lt:#FEF3E2;
+            --red:     #EA4335;
+            --text-1:  #202124;
+            --text-2:  #5F6368;
+            --divider: #E8EAED;
+            --surface: #FFFFFF;
+            --bg:      #F8F9FA;
         }
 
         body {
-            font-family: 'Noto Kufi Arabic', sans-serif;
-            background-color: var(--light);
-            margin: 0;
-            color: var(--dark);
-            line-height: 1.6;
+            font-family: 'Cairo', sans-serif;
+            background: var(--bg);
+            color: var(--text-1);
+            direction: rtl;
         }
 
-        .hero {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 60px 20px;
-            text-align: center;
-            border-bottom-left-radius: 40px;
-            border-bottom-right-radius: 40px;
-        }
-        .hero h1 { font-weight: 800; font-size: 2.2rem; margin-bottom: 10px; }
-        .hero p { opacity: 0.9; font-size: 1.1rem; max-width: 600px; margin: auto; }
-
-        .container { padding: 40px 15px; max-width: 1000px; margin: auto; }
-
-        .store-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-            margin-top: -50px;
-        }
-
-        .app-card {
-            background: white;
-            border-radius: 35px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            transition: 0.3s;
-            border: 1px solid #e2e8f0;
+        /* ══ TOP BAR ══ */
+        .top-bar {
+            background: var(--surface);
+            border-bottom: 1px solid var(--divider);
+            height: 56px;
             display: flex;
-            flex-direction: column;
+            align-items: center;
+            padding: 0 20px;
+            gap: 14px;
+            position: sticky;
+            top: 0;
+            z-index: 99;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.07);
         }
-        .app-card:hover { transform: translateY(-10px); box-shadow: 0 25px 50px rgba(0,0,0,0.15); }
+        .top-bar-logo {
+            display: flex; align-items: center; gap: 8px;
+            font-size: 16px; font-weight: 700;
+            color: var(--text-1); text-decoration: none;
+        }
+        .logo-icon {
+            width: 32px; height: 32px; border-radius: 8px;
+            background: linear-gradient(135deg,#1A73E8,#0D47A1);
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 16px;
+        }
+        .top-bar-spacer { flex:1; }
+        .top-badge {
+            font-size: 12px; font-weight: 700;
+            background: var(--blue-lt); color: var(--blue);
+            padding: 4px 12px; border-radius: 100px;
+        }
 
-        .app-header { padding: 40px; text-align: center; color: white; }
-        .kunashi-header { background: linear-gradient(45deg, #b7791f, #d97706); }
-        .tanqiti-header { background: linear-gradient(45deg, #059669, #10b981); }
-
-        .app-header i { font-size: 4rem; margin-bottom: 15px; }
-        .app-header h2 { margin: 0; font-size: 1.8rem; font-weight: 800; }
-
-        .app-body { padding: 30px; flex-grow: 1; display: flex; flex-direction: column; }
-        .app-body ul { padding: 0; list-style: none; margin: 0 0 30px 0; }
-        .app-body li { margin-bottom: 12px; font-size: 0.95rem; display: flex; align-items: center; gap: 12px; }
-        .app-body li i { color: #94a3b8; }
-
-        .btn-download {
-            display: block;
+        /* ══ BANNER ══ */
+        .banner {
+            background: var(--surface);
+            border-bottom: 1px solid var(--divider);
+            padding: 36px 20px 32px;
             text-align: center;
-            padding: 18px;
-            border-radius: 20px;
-            text-decoration: none;
-            font-weight: 800;
-            font-size: 1.1rem;
-            transition: 0.3s;
-            margin-top: auto;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
-        .btn-kunashi { background: var(--kunashi); color: white; }
-        .btn-tanqiti { background: var(--tanqiti); color: white; }
-        .btn-download:active { transform: scale(0.95); }
+        .banner-eyebrow {
+            font-size: 12px; font-weight: 700; color: var(--text-2);
+            letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px;
+        }
+        .banner h1 {
+            font-size: 26px; font-weight: 800;
+            color: var(--text-1); margin-bottom: 8px; line-height: 1.3;
+        }
+        .banner p {
+            font-size: 14px; color: var(--text-2);
+            max-width: 440px; margin: 0 auto 20px; line-height: 1.7;
+        }
+        .g-strip { display:flex; justify-content:center; gap:5px; }
+        .gd { width:10px; height:10px; border-radius:50%; }
 
-        .trust-section { margin-top: 60px; text-align: center; background: white; padding: 40px; border-radius: 30px; }
-        .trust-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; margin-top: 30px; }
-        .trust-item i { font-size: 2.5rem; color: var(--primary); margin-bottom: 10px; }
-        .trust-item p { font-weight: bold; color: #64748b; margin: 0; }
+        /* ══ STATS ROW ══ */
+        .stats-row {
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            background: var(--surface);
+            border-bottom: 1px solid var(--divider);
+            padding: 0;
+            overflow-x: auto;
+        }
+        .stat-item {
+            flex: 1;
+            min-width: 100px;
+            text-align: center;
+            padding: 18px 10px;
+            border-left: 1px solid var(--divider);
+        }
+        .stat-item:last-child { border-left: none; }
+        .stat-num {
+            font-size: 22px; font-weight: 800; color: var(--blue);
+            line-height: 1; margin-bottom: 4px;
+        }
+        .stat-lbl { font-size: 12px; color: var(--text-2); font-weight: 600; }
 
-        footer { text-align: center; padding: 50px; color: #94a3b8; font-size: 0.9rem; }
+        /* ══ SECTION LABEL ══ */
+        .section-label {
+            font-size: 13px; font-weight: 700;
+            color: var(--text-2); letter-spacing: 0.5px;
+            padding: 24px 20px 12px;
+            max-width: 780px; margin: 0 auto;
+        }
+
+        /* ══ WRAP ══ */
+        .content-wrap { max-width: 780px; margin: 0 auto; padding: 0 16px; }
+
+        /* ══ APP CARDS ══ */
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+        .app-card {
+            background: var(--surface);
+            border-radius: 20px;
+            border: 1px solid var(--divider);
+            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+            overflow: hidden;
+            display: flex; flex-direction: column;
+            transition: box-shadow .22s, transform .2s;
+        }
+        .app-card:hover {
+            box-shadow: 0 6px 20px rgba(0,0,0,0.11);
+            transform: translateY(-3px);
+        }
+        .card-strip { height: 6px; }
+        .strip-amber { background: linear-gradient(90deg,#E37400,#FBBC04); }
+        .strip-green { background: linear-gradient(90deg,#1E8E3E,#34A853); }
+
+        .card-body { padding: 20px 20px 0; flex:1; }
+        .card-top { display:flex; align-items:center; gap:14px; margin-bottom:12px; }
+        .app-icon {
+            width:60px; height:60px; border-radius:14px;
+            display:flex; align-items:center; justify-content:center;
+            font-size:26px; flex-shrink:0;
+        }
+        .icon-amber { background:var(--amber-lt); }
+        .icon-green  { background:var(--green-lt); }
+        .app-meta { flex:1; }
+        .app-name { font-size:17px; font-weight:800; margin-bottom:2px; }
+        .name-amber { color:var(--amber); }
+        .name-green  { color:var(--green); }
+        .app-subtitle { font-size:12px; color:var(--text-2); font-weight:600; }
+        .star-row { display:flex; align-items:center; gap:3px; margin-top:5px; }
+        .star-row i { font-size:12px; color:#FBBC04; }
+        .star-row span { font-size:12px; color:var(--text-2); margin-right:2px; }
+
+        /* pill tags */
+        .tags { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:14px; }
+        .tag {
+            font-size:11px; font-weight:700; padding:3px 10px;
+            border-radius:100px; border:1.5px solid;
+        }
+        .tag-amber { border-color:var(--amber); color:var(--amber); }
+        .tag-green  { border-color:var(--green); color:var(--green); }
+
+        /* description */
+        .app-desc {
+            font-size:13.5px; color:var(--text-2);
+            line-height:1.7; margin-bottom:16px;
+        }
+
+        /* features */
+        .features { list-style:none; margin-bottom:16px; }
+        .features li {
+            display:flex; align-items:flex-start; gap:10px;
+            padding:8px 0; border-bottom:1px solid var(--divider);
+            font-size:13.5px; color:var(--text-1);
+        }
+        .features li:last-child { border-bottom:none; }
+        .feat-icon {
+            width:22px; height:22px; border-radius:50%;
+            display:flex; align-items:center; justify-content:center;
+            font-size:11px; flex-shrink:0; margin-top:1px;
+        }
+        .fi-amber { background:var(--amber-lt); color:var(--amber); }
+        .fi-green  { background:var(--green-lt);  color:var(--green); }
+        .feat-text {}
+        .feat-title { font-weight:700; display:block; }
+        .feat-sub   { font-size:12px; color:var(--text-2); display:block; line-height:1.5; }
+
+        /* free badge */
+        .free-badge {
+            display:flex; align-items:center; gap:8px;
+            background:var(--bg); border-radius:10px;
+            padding:10px 14px; margin-bottom:14px;
+            font-size:13px; font-weight:600; color:var(--text-2);
+        }
+        .free-badge span { color:var(--green); font-weight:800; font-size:15px; }
+
+        /* download button */
+        .card-footer { padding:16px 20px 20px; }
+        .btn-dl {
+            display:flex; align-items:center; justify-content:center; gap:8px;
+            width:100%; padding:14px; border-radius:12px;
+            text-decoration:none; font-family:'Cairo',sans-serif;
+            font-size:15px; font-weight:800; border:none; cursor:pointer;
+            transition:filter .18s, transform .14s;
+        }
+        .btn-dl:hover { filter:brightness(1.08); transform:translateY(-1px); }
+        .btn-dl:active { transform:scale(0.97); }
+        .btn-amber { background:var(--amber); color:white; box-shadow:0 2px 8px rgba(227,116,0,.3); }
+        .btn-green  { background:var(--green);  color:white; box-shadow:0 2px 8px rgba(30,142,62,.3); }
+
+        /* ══ TESTIMONIALS ══ */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 14px;
+            margin-bottom: 16px;
+        }
+        .review-card {
+            background: var(--surface);
+            border-radius: 16px;
+            border: 1px solid var(--divider);
+            padding: 18px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+        }
+        .review-top { display:flex; align-items:center; gap:10px; margin-bottom:10px; }
+        .reviewer-avatar {
+            width:38px; height:38px; border-radius:50%;
+            display:flex; align-items:center; justify-content:center;
+            font-size:18px; flex-shrink:0;
+        }
+        .av-amber { background:var(--amber-lt); }
+        .av-green  { background:var(--green-lt); }
+        .av-blue   { background:var(--blue-lt); }
+        .reviewer-info {}
+        .reviewer-name { font-size:13px; font-weight:700; }
+        .reviewer-role { font-size:11px; color:var(--text-2); }
+        .review-stars { display:flex; gap:2px; margin-bottom:8px; }
+        .review-stars i { font-size:12px; color:#FBBC04; }
+        .review-text { font-size:13px; color:var(--text-2); line-height:1.6; }
+        .review-app-tag {
+            display:inline-block; margin-top:10px;
+            font-size:11px; font-weight:700; padding:2px 8px;
+            border-radius:100px; background:var(--bg); color:var(--text-2);
+        }
+
+        /* ══ TRUST ══ */
+        .trust-card {
+            background: var(--surface);
+            border-radius: 20px;
+            border: 1px solid var(--divider);
+            padding: 24px 20px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+            margin-bottom: 16px;
+        }
+        .trust-title { font-size:14px; font-weight:700; color:var(--text-2); margin-bottom:18px; }
+        .trust-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; text-align:center; }
+        .trust-item { display:flex; flex-direction:column; align-items:center; gap:8px; }
+        .trust-icon-wrap {
+            width:44px; height:44px; border-radius:50%;
+            background:var(--blue-lt);
+            display:flex; align-items:center; justify-content:center;
+            color:var(--blue); font-size:18px;
+        }
+        .trust-label { font-size:12px; font-weight:700; color:var(--text-2); line-height:1.4; }
+
+        /* ══ COMPARISON TABLE ══ */
+        .compare-card {
+            background: var(--surface);
+            border-radius: 20px;
+            border: 1px solid var(--divider);
+            padding: 24px 20px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+            margin-bottom: 16px;
+            overflow-x: auto;
+        }
+        .compare-title { font-size:14px; font-weight:700; color:var(--text-2); margin-bottom:18px; }
+        table.compare {
+            width:100%; border-collapse:collapse; font-size:13px;
+        }
+        table.compare th, table.compare td {
+            padding:11px 10px; text-align:center;
+            border-bottom:1px solid var(--divider);
+        }
+        table.compare th { font-weight:800; color:var(--text-1); font-size:13px; }
+        table.compare td:first-child { text-align:right; font-weight:600; color:var(--text-2); }
+        .c-amber { color:var(--amber); font-weight:800; }
+        .c-green  { color:var(--green); font-weight:800; }
+        .c-check  { color:var(--green); font-size:15px; }
+        .c-cross  { color:#BDC1C6; font-size:15px; }
+
+        /* ══ FAQ ══ */
+        .faq-card {
+            background: var(--surface);
+            border-radius: 20px;
+            border: 1px solid var(--divider);
+            overflow: hidden;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+            margin-bottom: 16px;
+        }
+        .faq-header {
+            padding: 20px 20px 16px;
+            border-bottom: 1px solid var(--divider);
+        }
+        .faq-title { font-size:14px; font-weight:700; color:var(--text-2); }
+
+        details.faq-item { border-bottom: 1px solid var(--divider); }
+        details.faq-item:last-child { border-bottom: none; }
+
+        summary.faq-q {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 16px 20px;
+            cursor: pointer;
+            list-style: none;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-1);
+            user-select: none;
+            transition: background .15s;
+        }
+        summary.faq-q:hover { background: var(--bg); }
+        summary.faq-q::-webkit-details-marker { display:none; }
+
+        .faq-arrow {
+            width:24px; height:24px; border-radius:50%;
+            background:var(--bg); display:flex;
+            align-items:center; justify-content:center;
+            font-size:12px; color:var(--text-2);
+            flex-shrink:0; transition:transform .25s;
+        }
+        details[open] .faq-arrow { transform:rotate(180deg); }
+
+        .faq-cat {
+            font-size:10px; font-weight:700; padding:2px 8px;
+            border-radius:100px; flex-shrink:0;
+        }
+        .cat-amber { background:var(--amber-lt); color:var(--amber); }
+        .cat-green  { background:var(--green-lt);  color:var(--green); }
+        .cat-blue   { background:var(--blue-lt);   color:var(--blue); }
+
+        .faq-a {
+            padding: 0 20px 18px 20px;
+            font-size: 13.5px;
+            color: var(--text-2);
+            line-height: 1.75;
+            border-top: 1px solid var(--divider);
+            padding-top: 14px;
+        }
+
+        /* ══ FOOTER ══ */
+        footer {
+            text-align:center; padding:40px 20px;
+            font-size:12px; color:var(--text-2);
+        }
+        footer a { color:var(--blue); text-decoration:none; }
+
+        @media(max-width:480px) {
+            .banner h1 { font-size:20px; }
+            .trust-grid { gap:10px; }
+            .trust-label { font-size:11px; }
+            .trial-price { display:none; }
+        }
+
+        /* ══ TRIAL BANNER ══ */
+        .trial-banner {
+            background: linear-gradient(135deg,#1A73E8 0%,#0D47A1 100%);
+            padding: 16px 20px;
+        }
+        .trial-inner {
+            max-width: 780px; margin: 0 auto;
+            display: flex; align-items: center; gap: 14px;
+        }
+        .trial-icon { font-size: 28px; flex-shrink: 0; }
+        .trial-text { flex: 1; color: white; }
+        .trial-text strong { display: block; font-size: 15px; font-weight: 800; }
+        .trial-text span   { font-size: 12px; opacity: .85; }
+        .trial-price {
+            text-align: center; flex-shrink: 0;
+            background: rgba(255,255,255,.15);
+            border-radius: 12px; padding: 8px 14px; color: white;
+        }
+        .price-num { font-size: 20px; font-weight: 800; line-height: 1; }
+        .price-num span { font-size: 13px; font-weight: 600; margin-right: 2px; }
+        .price-sub { font-size: 11px; opacity: .8; margin-top: 2px; }
+
+        /* ══ PRICE BADGE ══ */
+        .price-badge {
+            border-radius: 12px; overflow: hidden;
+            border: 1.5px solid var(--divider); margin-bottom: 14px;
+        }
+        .price-badge-trial {
+            display: flex; align-items: center; gap: 8px;
+            padding: 10px 14px;
+            background: var(--amber-lt); color: var(--amber);
+            font-size: 13px; font-weight: 700;
+            border-bottom: 1.5px solid var(--divider);
+        }
+        .price-badge-full {
+            display: flex; align-items: center; gap: 8px;
+            padding: 10px 14px; background: var(--bg);
+        }
+        .pb-label  { font-size: 12px; color: var(--text-2); font-weight: 600; }
+        .pb-price  { font-size: 16px; font-weight: 800; color: var(--text-1); margin-right: auto; }
+        .pb-period {
+            font-size: 11px; color: var(--text-2);
+            background: var(--divider); padding: 2px 8px; border-radius: 100px;
+        }
+
+        /* ══ BUTTON SUB ══ */
+        .btn-sub {
+            text-align: center; font-size: 11px;
+            color: var(--text-2); margin-top: 8px;
+        }
     </style>
 </head>
 <body>
 
-    <section class="hero">
-        <h1>متجر الأدوات التعليمية</h1>
-        <p>حلول تقنية ذكية مصممة خصيصاً للأستاذ الجزائري المتميز.</p>
-    </section>
+<!-- ── Top bar ── -->
+<header class="top-bar">
+    <a class="top-bar-logo" href="#">
+        <div class="logo-icon">🎓</div>
+        <span>الأستاذ الذكي</span>
+    </a>
+    <div class="top-bar-spacer"></div>
+    <div class="top-badge">متجر التطبيقات</div>
+</header>
 
-    <div class="container">
-        <div class="store-grid">
-            
-            <div class="app-card">
-                <div class="app-header kunashi-header">
-                    <i class="fas fa-wallet"></i>
-                    <h2>كناشي Pro</h2>
-                </div>
-                <div class="app-body">
-                    <p style="font-weight:800; color:#b7791f; margin-bottom: 20px;">المالية والتنظيم الإداري</p>
-                    <ul>
-                        <li><i class="fas fa-check"></i> إدارة أرباح الساعات الإضافية.</li>
-                        <li><i class="fas fa-check"></i> حساب المصاريف والديون بدقة.</li>
-                        <li><i class="fas fa-check"></i> تنظيم الأفواج وقوائم الحضور.</li>
-                        <li><i class="fas fa-check"></i> تقارير مالية بصيغة PDF.</li>
-                    </ul>
-                    <a href="https://www.appcreator24.com/app3976003-i4w7hb" class="btn-download btn-kunashi">
-                        <i class="fas fa-download"></i> تحميل تطبيق كناشي
-                    </a>
-                </div>
-            </div>
+<!-- ── Banner ── -->
+<section class="banner">
+    <div class="banner-eyebrow">أدوات حصرية للمعلم الجزائري</div>
+    <h1>وفّر وقتك للتدريس لا للأوراق</h1>
+    <p>تطبيقان ذكيان يلغيان الدفاتر الورقية، الحسابات اليدوية، وفوضى الملفات — كل شيء في هاتفك بضغطة واحدة.</p>
+    <div class="g-strip">
+        <div class="gd" style="background:#1A73E8"></div>
+        <div class="gd" style="background:#EA4335"></div>
+        <div class="gd" style="background:#FBBC04"></div>
+        <div class="gd" style="background:#34A853"></div>
+    </div>
+</section>
 
-            <div class="app-card">
-                <div class="app-header tanqiti-header">
-                    <i class="fas fa-star"></i>
-                    <h2>تنقيطي Pro</h2>
-                </div>
-                <div class="app-body">
-                    <p style="font-weight:800; color:#059669; margin-bottom: 20px;">النقاط والتقارير المدرسية</p>
-                    <ul>
-                        <li><i class="fas fa-check"></i> رصد سريع لنقاط الفروض والاختبارات.</li>
-                        <li><i class="fas fa-check"></i> حساب تلقائي للمعدلات والترتيب.</li>
-                        <li><i class="fas fa-check"></i> تصدير الكشوفات لموقع الطباعة الرسمي.</li>
-                        <li><i class="fas fa-check"></i> إرسال النتائج عبر البريد الإلكتروني.</li>
-                    </ul>
-                    <a href="https://www.appcreator24.com/app3976341-vyjctf" class="btn-download btn-tanqiti">
-                        <i class="fas fa-download"></i> تحميل تطبيق تنقيطي
-                    </a>
-                </div>
-            </div>
+<!-- ── Stats ── -->
+<div class="stats-row">
+    <div class="stat-item">
+        <div class="stat-num">+500</div>
+        <div class="stat-lbl">أستاذ يستخدمهم</div>
+    </div>
+    <div class="stat-item">
+        <div class="stat-num">1000</div>
+        <div class="stat-lbl">دج · سعر كل تطبيق</div>
+    </div>
+    <div class="stat-item">
+        <div class="stat-num">مجاني</div>
+        <div class="stat-lbl">فترة تجريبية</div>
+    </div>
+    <div class="stat-item">
+        <div class="stat-num">PDF</div>
+        <div class="stat-lbl">تصدير فوري</div>
+    </div>
+</div>
 
+<!-- ── Trial Banner ── -->
+<div class="trial-banner">
+    <div class="trial-inner">
+        <div class="trial-icon">🎁</div>
+        <div class="trial-text">
+            <strong>جرّب مجاناً قبل الشراء!</strong>
+            <span>فترة تجريبية كاملة — بعدها فقط 1000 دج لكل تطبيق</span>
         </div>
+        <div class="trial-price">
+            <div class="price-num">1000<span>دج</span></div>
+            <div class="price-sub">بعد التجربة</div>
+        </div>
+    </div>
+</div>
 
-        <div class="trust-section">
-            <h3 style="margin-bottom: 40px; color: var(--dark); font-weight: 800;">لماذا تثق في تطبيقاتنا؟</h3>
-            <div class="trust-grid">
-                <div class="trust-item">
-                    <i class="fas fa-user-shield"></i>
-                    <p>خصوصية بياناتك 100%</p>
-                </div>
-                <div class="trust-item">
-                    <i class="fas fa-bolt"></i>
-                    <p>سرعة وسهولة في الإدخال</p>
-                </div>
-                <div class="trust-item">
-                    <i class="fas fa-cloud-download-alt"></i>
-                    <p>تحديثات مستمرة ومجانية</p>
+<!-- ── App cards ── -->
+<div class="section-label">التطبيقات المتاحة</div>
+<div class="content-wrap">
+<div class="apps-grid">
+
+    <!-- كناشي -->
+    <div class="app-card">
+        <div class="card-strip strip-amber"></div>
+        <div class="card-body">
+            <div class="card-top">
+                <div class="app-icon icon-amber">💼</div>
+                <div class="app-meta">
+                    <div class="app-name name-amber">كناشي Pro</div>
+                    <div class="app-subtitle">المالية والتنظيم الإداري</div>
+                    <div class="star-row">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span>4.5 · 120 تقييم</span>
+                    </div>
                 </div>
             </div>
+
+            <div class="tags">
+                <span class="tag tag-amber">مالية</span>
+                <span class="tag tag-amber">حضور</span>
+                <span class="tag tag-amber">PDF</span>
+                <span class="tag tag-amber">ساعات إضافية</span>
+            </div>
+
+            <p class="app-desc">
+                هل تضيع ساعات كل شهر تحسب راتبك، ساعاتك الإضافية، وديونك يدوياً؟
+                <strong>كناشي Pro</strong> يحل هذا كله في ثوانٍ. سجّل أفواجك، حضورهم، مدفوعاتهم — والتطبيق يولّد لك تقارير جاهزة للطباعة تلقائياً.
+            </p>
+
+            <ul class="features">
+                <li>
+                    <div class="feat-icon fi-amber"><i class="fas fa-clock"></i></div>
+                    <span class="feat-text">
+                        <span class="feat-title">إدارة الساعات الإضافية</span>
+                        <span class="feat-sub">سجّل ساعاتك اليومية واحسب راتبك الشهري تلقائياً دون أي خطأ حسابي</span>
+                    </span>
+                </li>
+                <li>
+                    <div class="feat-icon fi-amber"><i class="fas fa-wallet"></i></div>
+                    <span class="feat-text">
+                        <span class="feat-title">تتبع المصاريف والديون</span>
+                        <span class="feat-sub">اعرف بالضبط من دفع ومن لم يدفع بعد، مع تنبيهات واضحة</span>
+                    </span>
+                </li>
+                <li>
+                    <div class="feat-icon fi-amber"><i class="fas fa-users"></i></div>
+                    <span class="feat-text">
+                        <span class="feat-title">تنظيم الأفواج والحضور</span>
+                        <span class="feat-sub">أفواج متعددة، غيابات، ملاحظات — كل شيء منظّم في مكان واحد</span>
+                    </span>
+                </li>
+                <li>
+                    <div class="feat-icon fi-amber"><i class="fas fa-file-pdf"></i></div>
+                    <span class="feat-text">
+                        <span class="feat-title">تقارير PDF جاهزة للطباعة</span>
+                        <span class="feat-sub">صدّر كشف مالي أو قائمة حضور بضغطة وأرسله مباشرة</span>
+                    </span>
+                </li>
+            </ul>
+
+            <div class="price-badge">
+                <div class="price-badge-trial">
+                    <i class="fas fa-gift"></i>
+                    <span>فترة تجريبية مجانية</span>
+                </div>
+                <div class="price-badge-full">
+                    <span class="pb-label">بعد التجربة:</span>
+                    <span class="pb-price">1000 دج</span>
+                    <span class="pb-period">دفعة واحدة</span>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <a href="https://www.appcreator24.com/app3976003-i4w7hb" class="btn-dl btn-amber">
+                <i class="fas fa-play-circle"></i> ابدأ التجربة المجانية
+            </a>
+            <div class="btn-sub">بعد التجربة · 1000 دج فقط · دفعة واحدة</div>
         </div>
     </div>
 
-    <footer>
-        <p>جميع الحقوق محفوظة &copy; 2026 - المطور الجزائري لتقنيات التعليم</p>
-    </footer>
+    <!-- تنقيطي -->
+    <div class="app-card">
+        <div class="card-strip strip-green"></div>
+        <div class="card-body">
+            <div class="card-top">
+                <div class="app-icon icon-green">⭐</div>
+                <div class="app-meta">
+                    <div class="app-name name-green">تنقيطي Pro</div>
+                    <div class="app-subtitle">النقاط والتقارير المدرسية</div>
+                    <div class="star-row">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <span>5.0 · 98 تقييم</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tags">
+                <span class="tag tag-green">نقاط</span>
+                <span class="tag tag-green">معدلات</span>
+                <span class="tag tag-green">ترتيب</span>
+                <span class="tag tag-green">كشوفات</span>
+            </div>
+
+            <p class="app-desc">
+                إدخال 30 نقطة يدوياً ثم حساب المعدلات والترتيب؟ هذا يأخذ وقتاً طويلاً ومرهقاً.
+                <strong>تنقيطي Pro</strong> يتولّى الحساب فوراً — أدخل النقاط، واحصل على الكشف جاهزاً للطباعة الرسمية.
+            </p>
+
+            <ul class="features">
+                <li>
+                    <div class="feat-icon fi-green"><i class="fas fa-pen"></i></div>
+                    <span class="feat-text">
+                        <span class="feat-title">إدخال سريع للنقاط</span>
+                        <span class="feat-sub">واجهة مُبسَّطة تتيح رصد نقاط الفرض والاختبار في ثوانٍ</span>
+                    </span>
+                </li>
+                <li>
+                    <div class="feat-icon fi-green"><i class="fas fa-calculator"></i></div>
+                    <span class="feat-text">
+                        <span class="feat-title">حساب تلقائي للمعدلات والترتيب</span>
+                        <span class="feat-sub">المعادلة الوزنية الصحيحة مدمجة — لا تحسبها أنت أبداً</span>
+                    </span>
+                </li>
+                <li>
+                    <div class="feat-icon fi-green"><i class="fas fa-print"></i></div>
+                    <span class="feat-text">
+                        <span class="feat-title">تصدير للموقع الرسمي للطباعة</span>
+                        <span class="feat-sub">كشوفات جاهزة متوافقة مع نظام الطباعة المدرسي الرسمي</span>
+                    </span>
+                </li>
+                <li>
+                    <div class="feat-icon fi-green"><i class="fas fa-envelope"></i></div>
+                    <span class="feat-text">
+                        <span class="feat-title">مشاركة النتائج بالبريد</span>
+                        <span class="feat-sub">أرسل نتائج الفوج مباشرة للإدارة أو الأولياء بكبسة زر</span>
+                    </span>
+                </li>
+            </ul>
+
+            <div class="price-badge">
+                <div class="price-badge-trial" style="background:var(--green-lt);color:var(--green)">
+                    <i class="fas fa-gift"></i>
+                    <span>فترة تجريبية مجانية</span>
+                </div>
+                <div class="price-badge-full">
+                    <span class="pb-label">بعد التجربة:</span>
+                    <span class="pb-price">1000 دج</span>
+                    <span class="pb-period">دفعة واحدة</span>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <a href="https://www.appcreator24.com/app3976341-vyjctf" class="btn-dl btn-green">
+                <i class="fas fa-play-circle"></i> ابدأ التجربة المجانية
+            </a>
+            <div class="btn-sub">بعد التجربة · 1000 دج فقط · دفعة واحدة</div>
+        </div>
+    </div>
+
+</div><!-- /apps-grid -->
+
+<!-- ── Testimonials ── -->
+<div class="section-label" style="padding-top:8px">آراء الأساتذة</div>
+<div class="reviews-grid">
+
+    <div class="review-card">
+        <div class="review-top">
+            <div class="reviewer-avatar av-amber">👨‍🏫</div>
+            <div class="reviewer-info">
+                <div class="reviewer-name">أ. كريم بن علي</div>
+                <div class="reviewer-role">أستاذ رياضيات · الجزائر العاصمة</div>
+            </div>
+        </div>
+        <div class="review-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+        </div>
+        <p class="review-text">
+            "كنت أضيّع ساعة كل نهاية شهر في الحسابات. الآن كناشي يعطيني التقرير في دقيقتين. ما شاء الله على التطبيق!"
+        </p>
+        <span class="review-app-tag">💼 كناشي Pro</span>
+    </div>
+
+    <div class="review-card">
+        <div class="review-top">
+            <div class="reviewer-avatar av-green">👩‍🏫</div>
+            <div class="reviewer-info">
+                <div class="reviewer-name">أ. سمية حمدي</div>
+                <div class="reviewer-role">أستاذة علوم · وهران</div>
+            </div>
+        </div>
+        <div class="review-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+        </div>
+        <p class="review-text">
+            "تنقيطي غيّر طريقة عملي كلياً. أدخل النقاط وأطبع الكشف مباشرة. لا أخطاء، لا ضغط!"
+        </p>
+        <span class="review-app-tag">⭐ تنقيطي Pro</span>
+    </div>
+
+    <div class="review-card">
+        <div class="review-top">
+            <div class="reviewer-avatar av-blue">👨‍🏫</div>
+            <div class="reviewer-info">
+                <div class="reviewer-name">أ. يوسف عمراني</div>
+                <div class="reviewer-role">أستاذ لغة عربية · قسنطينة</div>
+            </div>
+        </div>
+        <div class="review-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p class="review-text">
+            "استعملت الاثنين معاً. كناشي للساعات وتنقيطي للكشوفات. ننصح بيهم كل أستاذ في الجزائر."
+        </p>
+        <span class="review-app-tag">💼 كناشي + ⭐ تنقيطي</span>
+    </div>
+
+</div>
+
+<!-- ── Comparison ── -->
+<div class="section-label" style="padding-top:8px">مقارنة الطريقة التقليدية مقابل التطبيقات</div>
+<div class="compare-card">
+    <div class="compare-title">لماذا تتخلى عن الدفتر الورقي؟</div>
+    <table class="compare">
+        <thead>
+            <tr>
+                <th style="text-align:right">الميزة</th>
+                <th>📓 الطريقة اليدوية</th>
+                <th class="c-amber">💼 كناشي</th>
+                <th class="c-green">⭐ تنقيطي</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>حساب المعدلات</td>
+                <td>يدوي / أخطاء</td>
+                <td><i class="fas fa-check c-check"></i></td>
+                <td><i class="fas fa-check c-check"></i></td>
+            </tr>
+            <tr>
+                <td>تقارير PDF</td>
+                <td><i class="fas fa-times c-cross"></i></td>
+                <td><i class="fas fa-check c-check"></i></td>
+                <td><i class="fas fa-check c-check"></i></td>
+            </tr>
+            <tr>
+                <td>تتبع الديون والمدفوعات</td>
+                <td>ورقة منفصلة</td>
+                <td><i class="fas fa-check c-check"></i></td>
+                <td><i class="fas fa-times c-cross"></i></td>
+            </tr>
+            <tr>
+                <td>التصدير للموقع الرسمي</td>
+                <td><i class="fas fa-times c-cross"></i></td>
+                <td><i class="fas fa-times c-cross"></i></td>
+                <td><i class="fas fa-check c-check"></i></td>
+            </tr>
+            <tr>
+                <td>نسخ احتياطي آمن</td>
+                <td><i class="fas fa-times c-cross"></i></td>
+                <td><i class="fas fa-check c-check"></i></td>
+                <td><i class="fas fa-check c-check"></i></td>
+            </tr>
+            <tr>
+                <td>السعر</td>
+                <td>ورق + وقت + أخطاء</td>
+                <td style="font-weight:800;color:var(--amber)">1000 دج</td>
+                <td style="font-weight:800;color:var(--green)">1000 دج</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- ── Trust ── -->
+<div class="section-label" style="padding-top:8px">لماذا تثق بنا؟</div>
+<div class="trust-card">
+    <div class="trust-grid">
+        <div class="trust-item">
+            <div class="trust-icon-wrap"><i class="fas fa-shield-alt"></i></div>
+            <div class="trust-label">بياناتك على هاتفك فقط</div>
+        </div>
+        <div class="trust-item">
+            <div class="trust-icon-wrap"><i class="fas fa-bolt"></i></div>
+            <div class="trust-label">سهل الاستخدام بدون تدريب</div>
+        </div>
+        <div class="trust-item">
+            <div class="trust-icon-wrap"><i class="fas fa-sync-alt"></i></div>
+            <div class="trust-label">تحديثات مستمرة مجانية</div>
+        </div>
+        <div class="trust-item">
+            <div class="trust-icon-wrap"><i class="fas fa-wifi-slash"></i></div>
+            <div class="trust-label">يعمل بدون إنترنت</div>
+        </div>
+        <div class="trust-item">
+            <div class="trust-icon-wrap"><i class="fas fa-flag"></i></div>
+            <div class="trust-label">مصمم للمنهج الجزائري</div>
+        </div>
+        <div class="trust-item">
+            <div class="trust-icon-wrap"><i class="fas fa-headset"></i></div>
+            <div class="trust-label">دعم فني مباشر</div>
+        </div>
+    </div>
+</div>
+
+<!-- ── FAQ ── -->
+<div class="section-label" style="padding-top:8px">الأسئلة الشائعة</div>
+<div class="faq-card">
+    <div class="faq-header">
+        <div class="faq-title">إجابات على أكثر الأسئلة تكراراً</div>
+    </div>
+
+    <details class="faq-item">
+        <summary class="faq-q">
+            <span>كم سعر التطبيق؟ وكيف تتم عملية الشراء؟</span>
+            <div style="display:flex;align-items:center;gap:6px;flex-shrink:0">
+                <span class="faq-cat cat-blue">عام</span>
+                <div class="faq-arrow"><i class="fas fa-chevron-down"></i></div>
+            </div>
+        </summary>
+        <p class="faq-a">
+            سعر كل تطبيق <strong>1000 دج</strong> — دفعة واحدة فقط، بدون أي اشتراك شهري أو سنوي. تبدأ بفترة تجريبية مجانية كاملة لتجرّب جميع الميزات، وبعدها تختار الشراء أو لا. إذا لم يعجبك التطبيق خلال الفترة التجريبية، لا تدفع شيئاً.
+        </p>
+    </details>
+
+    <details class="faq-item">
+        <summary class="faq-q">
+            <span>هل بياناتي آمنة؟ من يمكنه الوصول إليها؟</span>
+            <div style="display:flex;align-items:center;gap:6px;flex-shrink:0">
+                <span class="faq-cat cat-blue">أمان</span>
+                <div class="faq-arrow"><i class="fas fa-chevron-down"></i></div>
+            </div>
+        </summary>
+        <p class="faq-a">
+            بياناتك تُخزَّن محلياً على هاتفك فقط ولا تُرسَل إلى أي خادم خارجي. لا نحتاج إلى إنشاء حساب أو إدخال بريد إلكتروني. خصوصيتك محفوظة 100%.
+        </p>
+    </details>
+
+    <details class="faq-item">
+        <summary class="faq-q">
+            <span>هل يعمل التطبيق بدون اتصال بالإنترنت؟</span>
+            <div style="display:flex;align-items:center;gap:6px;flex-shrink:0">
+                <span class="faq-cat cat-blue">عام</span>
+                <div class="faq-arrow"><i class="fas fa-chevron-down"></i></div>
+            </div>
+        </summary>
+        <p class="faq-a">
+            نعم تماماً. التطبيقان يعملان بشكل كامل بدون إنترنت. الاتصال بالشبكة مطلوب فقط عند التحميل الأول وعند إرسال النتائج بالبريد الإلكتروني.
+        </p>
+    </details>
+
+    <details class="faq-item">
+        <summary class="faq-q">
+            <span>ما الفرق بين كناشي وتنقيطي؟ أيهما أحتاج؟</span>
+            <div style="display:flex;align-items:center;gap:6px;flex-shrink:0">
+                <span class="faq-cat cat-amber">كناشي</span>
+                <div class="faq-arrow"><i class="fas fa-chevron-down"></i></div>
+            </div>
+        </summary>
+        <p class="faq-a">
+            <strong>كناشي Pro</strong> مخصص للجانب المالي والإداري: الساعات الإضافية، الديون، الحضور، والمصاريف. أما <strong>تنقيطي Pro</strong> فهو للجانب التربوي: إدخال النقاط، حساب المعدلات، والكشوفات الرسمية. الأساتذة الذين يدرّسون دروس خصوصية يحتاجون الاثنين معاً.
+        </p>
+    </details>
+
+    <details class="faq-item">
+        <summary class="faq-q">
+            <span>كيف أُصدر كشف النقاط للموقع الرسمي للطباعة؟</span>
+            <div style="display:flex;align-items:center;gap:6px;flex-shrink:0">
+                <span class="faq-cat cat-green">تنقيطي</span>
+                <div class="faq-arrow"><i class="fas fa-chevron-down"></i></div>
+            </div>
+        </summary>
+        <p class="faq-a">
+            في تطبيق تنقيطي، بعد إدخال جميع النقاط، اضغط على زر "تصدير" واختر "موقع الطباعة الرسمي". سيُولَّد الملف تلقائياً بالتنسيق المطلوب ويمكنك رفعه مباشرة على الموقع المدرسي.
+        </p>
+    </details>
+
+    <details class="faq-item">
+        <summary class="faq-q">
+            <span>هل يمكنني استخدام كناشي لأكثر من مجموعة دروس خصوصية؟</span>
+            <div style="display:flex;align-items:center;gap:6px;flex-shrink:0">
+                <span class="faq-cat cat-amber">كناشي</span>
+                <div class="faq-arrow"><i class="fas fa-chevron-down"></i></div>
+            </div>
+        </summary>
+        <p class="faq-a">
+            نعم! كناشي يدعم إنشاء أفواج غير محدودة. يمكنك إنشاء فوج لكل مستوى أو كل مجموعة، وكل فوج له إدارته المالية وقائمة حضوره المستقلة.
+        </p>
+    </details>
+
+    <details class="faq-item">
+        <summary class="faq-q">
+            <span>ماذا لو فقدت هاتفي؟ هل سأفقد بياناتي؟</span>
+            <div style="display:flex;align-items:center;gap:6px;flex-shrink:0">
+                <span class="faq-cat cat-blue">أمان</span>
+                <div class="faq-arrow"><i class="fas fa-chevron-down"></i></div>
+            </div>
+        </summary>
+        <p class="faq-a">
+            ننصح بتصدير بياناتك دورياً بصيغة PDF أو إرسالها بالبريد الإلكتروني كنسخة احتياطية. كذلك إذا كنت تستخدم نسخ احتياطي لجهازك (Google Backup) فقد تُحفظ بيانات التطبيق تلقائياً.
+        </p>
+    </details>
+
+    <details class="faq-item">
+        <summary class="faq-q">
+            <span>على أي أجهزة يعمل التطبيق؟</span>
+            <div style="display:flex;align-items:center;gap:6px;flex-shrink:0">
+                <span class="faq-cat cat-blue">عام</span>
+                <div class="faq-arrow"><i class="fas fa-chevron-down"></i></div>
+            </div>
+        </summary>
+        <p class="faq-a">
+            التطبيقان متاحان حالياً على أجهزة Android (عبر متجر appcreator24). نسخة iOS قيد التطوير. يعمل على أي هاتف أندرويد يعمل بنظام Android 6.0 أو أحدث.
+        </p>
+    </details>
+
+</div><!-- /faq-card -->
+
+</div><!-- /content-wrap -->
+
+<footer>
+    <p>جميع الحقوق محفوظة &copy; 2026 — <a href="#">المطور الجزائري لتقنيات التعليم</a></p>
+</footer>
 
 </body>
 </html>
